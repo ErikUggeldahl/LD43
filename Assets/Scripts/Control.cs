@@ -6,6 +6,8 @@ public class Control : MonoBehaviour
 {
     public Picker picker;
 
+    public Transform nodes;
+    public GameObject city;
     public GameObject farm;
 
     enum State
@@ -18,6 +20,8 @@ public class Control : MonoBehaviour
 
     void Start()
     {
+        this.city = Instantiate(this.city, Vector3.zero, Quaternion.identity);
+        this.city.transform.parent = nodes;
     }
 
     void Update()
@@ -38,6 +42,7 @@ public class Control : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 var farm = Instantiate(this.farm);
+                farm.GetComponent<Farm>().city = city.transform;
                 farm.name = "Farm";
                 StartPicking(farm);
             }
