@@ -69,6 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4431710264755806}
   - component: {fileID: 135926406025970524}
+  - component: {fileID: 114470076336989756}
   - component: {fileID: 114146373199911448}
   m_Layer: 10
   m_Name: City
@@ -227,6 +228,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af0ab798e8aa3ba42a2adc18e62fe4b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resources: {fileID: 0}
+--- !u!114 &114470076336989756
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1825220237392024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c63e82ef4b2564aae2bde3d23693e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  displayName: City
+  cost: 0
+  accepts: 0100000002000000
+  connects: 
+  description: 
 --- !u!135 &135926406025970524
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -52,6 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4007811436978606}
   - component: {fileID: 135328949767871094}
+  - component: {fileID: 114732966520707230}
   - component: {fileID: 114679378734216344}
   m_Layer: 10
   m_Name: Market
@@ -228,6 +229,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: {fileID: 1677483844028398, guid: 20708226f8a938d4d9a271618f98b99c, type: 2}
+--- !u!114 &114732966520707230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1579913721565420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c63e82ef4b2564aae2bde3d23693e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  displayName: Market
+  cost: 10
+  accepts: 01000000
+  connects: 00000000
+  description: Turns sheep into valuable currency needed for continued building.
 --- !u!135 &135328949767871094
 SphereCollider:
   m_ObjectHideFlags: 1

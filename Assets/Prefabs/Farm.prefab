@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4007811436978606}
   - component: {fileID: 135328949767871094}
+  - component: {fileID: 114261676071061652}
   - component: {fileID: 114986947892239500}
   m_Layer: 10
   m_Name: Farm
@@ -187,6 +188,24 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1960551751442544}
   m_Mesh: {fileID: 4300000, guid: 03ca50f1ad8850841b5705d95e9d2e29, type: 3}
+--- !u!114 &114261676071061652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1579913721565420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c63e82ef4b2564aae2bde3d23693e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  displayName: Farm
+  cost: 5
+  accepts: 
+  connects: 0000000002000000
+  description: A fundamental building that produces sheep needed for sacrifices. Connect
+    a silo to turn its production into cows, which are a more valuable sacrifice.
 --- !u!114 &114986947892239500
 MonoBehaviour:
   m_ObjectHideFlags: 1
