@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class City : MonoBehaviour, RouteHandler
 {
+    public Resources resources;
+
     void Start()
 	{
 	}
@@ -33,5 +35,13 @@ public class City : MonoBehaviour, RouteHandler
 
     public void Receieve(GameObject traveller)
     {
+        if (traveller.tag == "Sheep")
+        {
+            resources.AddSacrifice();
+        }
+        else if (traveller.tag == "Coin")
+        {
+            resources.AddCoin(1);
+        }
     }
 }

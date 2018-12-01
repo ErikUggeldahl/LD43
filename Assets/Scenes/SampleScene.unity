@@ -2436,6 +2436,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2118459340}
   - component: {fileID: 2118459341}
+  - component: {fileID: 2118459343}
   - component: {fileID: 2118459339}
   - component: {fileID: 2118459342}
   m_Layer: 0
@@ -2487,6 +2488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1109a1c44aaab544c88962303263ff6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resources: {fileID: 2118459343}
   picker: {fileID: 2118459339}
   router: {fileID: 2118459342}
   nodes: {fileID: 298822498}
@@ -2511,3 +2513,16 @@ MonoBehaviour:
   cam: {fileID: 534669904}
   routeFromMarker: {fileID: 916080713}
   routeToMarker: {fileID: 1756119410}
+--- !u!114 &2118459343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2118459338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93415c4723f1e84abbc69e3132bb6f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sacrificeBar: {fileID: 1892112231}
+  coinText: {fileID: 857614493}

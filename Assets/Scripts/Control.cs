@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Control : MonoBehaviour
 {
+    public Resources resources;
     public Picker picker;
     public Router router;
 
@@ -28,6 +29,7 @@ public class Control : MonoBehaviour
     {
         city = Instantiate(city, Vector3.zero, Quaternion.identity);
         city.name = "City";
+        city.GetComponent<City>().resources = resources;
         city.transform.parent = nodes;
 
         StartIdle();
