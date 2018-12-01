@@ -1,0 +1,44 @@
+# =============== #
+# Unity generated #
+# =============== #
+[Bb]uild/
+[Ll]ibrary/
+[Oo]bj/
+[Tt]emp/
+
+# Unity Generated File On Crash Reports
+sysinfo.txt
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+*.csproj
+*.pidb
+*.sln
+*.suo
+*.svd
+*.unityproj
+*.user
+*.userprefs
+
+# Visual Studio cache directory
+.vs/
+
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# =============== #
+# Project folders #
+# =============== #
+AssetSrc/
+Screenshots/
