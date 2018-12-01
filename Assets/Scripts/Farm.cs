@@ -32,7 +32,7 @@ public class Farm : MonoBehaviour, RouteHandler
             {
                 var sheep = Instantiate(this.sheep, transform.position, Quaternion.identity);
                 sheep.name = "Sheep";
-                sheep.GetComponent<Sheep>().destination = destinations[0];
+                sheep.GetComponent<ResourceTravel>().destination = destinations[0];
 
                 sheepTimer += sheepTimerMax;
             }

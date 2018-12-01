@@ -2041,6 +2041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff13a9178bb6d134b8430d40d56313ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  control: {fileID: 2118459341}
   nodes: {fileID: 298822497}
   cam: {fileID: 534669904}
   blueprint: {fileID: 910642698}
@@ -2089,6 +2090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21991cbdcd8e8594abdd5d7d1fc3e414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  control: {fileID: 2118459341}
   roadPrefab: {fileID: 1778399446670904, guid: c830b7dd753bc0f4488a478661a6d9a8, type: 2}
   cam: {fileID: 534669904}
   routeFromMarker: {fileID: 916080713}
