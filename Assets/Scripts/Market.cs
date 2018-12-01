@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Farm : MonoBehaviour, RouteHandler
+public class Market : MonoBehaviour, RouteHandler
 {
-    public GameObject sheep;
+    public GameObject coin;
 
     List<Transform> destinations = new List<Transform>();
-    int currentDestination = 0;
 
-    float sheepTimerMax = 2.5f;
-    float sheepTimer = 0;
+    float cointTimerMax = 2.5f;
+    float coinTimer = 0;
+
+    uint sheepCount = 0;
 
     enum State
     {
@@ -19,26 +20,29 @@ public class Farm : MonoBehaviour, RouteHandler
     }
     State state = State.Idle;
 
-	void Start()
+    void Start()
 	{
-    }
+	}
 	
 	void Update()
 	{
         if (state == State.Producing)
         {
-            sheepTimer -= Time.deltaTime;
-            if (sheepTimer <= 0f)
+            if (coinTimer > 0f)
             {
-                var sheep = Instantiate(this.sheep, transform.position, Quaternion.identity);
-                sheep.name = "Sheep";
-                sheep.GetComponent<ResourceTravel>().destination = destinations[currentDestination++];
+                coinTimer -= Time.deltaTime;
+            }
+            if (sheepCount > 0 && coinTimer <= 0f)
+            {
+                var coin = Instantiate(this.coin, transform.position, Quaternion.identity);
+                coin.name = "Coin";
+                coin.GetComponent<ResourceTravel>().destination = destinations[0];
 
-                currentDestination %= destinations.Count;
-                sheepTimer += sheepTimerMax;
+                coinTimer += cointTimerMax;
+                sheepCount--;
             }
         }
-	}
+    }
 
     public bool HasAvailableRoutes()
     {
@@ -48,7 +52,7 @@ public class Farm : MonoBehaviour, RouteHandler
     public bool CanRouteTo(GameObject to)
     {
         if (destinations.Contains(to.transform)) return false;
-        return to.tag == "City" || to.tag == "Market";
+        return to.tag == "City";
     }
 
     public void AddRouteTo(GameObject to)
@@ -63,5 +67,9 @@ public class Farm : MonoBehaviour, RouteHandler
 
     public void Receieve(GameObject traveller)
     {
+        if (traveller.tag == "Sheep")
+        {
+            sheepCount++;
+        }
     }
 }

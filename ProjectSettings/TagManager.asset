@@ -6,6 +6,9 @@ TagManager:
   tags:
   - City
   - Farm
+  - Market
+  - Sheep
+  - Coin
   layers:
   - Default
   - TransparentFX

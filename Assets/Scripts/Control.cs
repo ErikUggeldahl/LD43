@@ -10,6 +10,7 @@ public class Control : MonoBehaviour
     public Transform nodes;
     public GameObject city;
     public GameObject farm;
+    public GameObject market;
 
     public GameObject uiAction;
     public GameObject uiBuild;
@@ -55,6 +56,10 @@ public class Control : MonoBehaviour
             {
                 BuildFarm();
             }
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                BuildMarket();
+            }
         }
     }
 
@@ -77,6 +82,13 @@ public class Control : MonoBehaviour
         var farm = Instantiate(this.farm);
         farm.name = "Farm";
         StartPicking(farm);
+    }
+
+    public void BuildMarket()
+    {
+        var market = Instantiate(this.market);
+        market.name = "Market";
+        StartPicking(market);
     }
 
     void StartPicking(GameObject building)

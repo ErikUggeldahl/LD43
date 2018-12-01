@@ -30,4 +30,8 @@ public class City : MonoBehaviour, RouteHandler
     public void AddRouteFrom(GameObject from)
     {
     }
+
+    public void Receieve(GameObject traveller)
+    {
+    }
 }

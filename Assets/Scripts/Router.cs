@@ -11,6 +11,7 @@ public class Router : MonoBehaviour
     public Transform routeToMarker;
 
     GameObject road;
+    const float ROAD_HEIGHT = 0.07f;
 
     RouteHandler routeFrom;
 
@@ -66,8 +67,8 @@ public class Router : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     routeFrom = routeHandler;
-                    road.GetComponent<LineRenderer>().SetPosition(0, new Vector3(hit.transform.position.x, 0.01f, hit.transform.position.z));
-                    road.GetComponent<LineRenderer>().SetPosition(1, new Vector3(hit.transform.position.x, 0.01f, hit.transform.position.z));
+                    road.GetComponent<LineRenderer>().SetPosition(0, new Vector3(hit.transform.position.x, ROAD_HEIGHT, hit.transform.position.z));
+                    road.GetComponent<LineRenderer>().SetPosition(1, new Vector3(hit.transform.position.x, ROAD_HEIGHT, hit.transform.position.z));
                 }
             }
             else if (routeHandler != routeFrom && routeFrom.CanRouteTo((routeHandler as MonoBehaviour).gameObject))
@@ -75,7 +76,7 @@ public class Router : MonoBehaviour
                 routeToMarker.gameObject.SetActive(true);
                 routeToMarker.position = hit.transform.position;
                 routeToMarker.localScale = Vector3.one * (hit.collider as SphereCollider).radius;
-                road.GetComponent<LineRenderer>().SetPosition(1, new Vector3(hit.transform.position.x, 0.01f, hit.transform.position.z));
+                road.GetComponent<LineRenderer>().SetPosition(1, new Vector3(hit.transform.position.x, ROAD_HEIGHT, hit.transform.position.z));
 
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -98,7 +99,7 @@ public class Router : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit, float.PositiveInfinity, groundMask))
                 {
-                    road.GetComponent<LineRenderer>().SetPosition(1, new Vector3(hit.point.x, 0.01f, hit.point.z));
+                    road.GetComponent<LineRenderer>().SetPosition(1, new Vector3(hit.point.x, ROAD_HEIGHT, hit.point.z));
                 }
             }
         }

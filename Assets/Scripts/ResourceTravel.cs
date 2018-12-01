@@ -7,7 +7,7 @@ public class ResourceTravel : MonoBehaviour
     public Transform destination;
     float completionRadius;
 
-    float speed = 0.5f;
+    float speed = 1.5f;
 
 	void Start()
 	{
@@ -23,6 +23,7 @@ public class ResourceTravel : MonoBehaviour
         }
         else
         {
+            destination.GetComponent<RouteHandler>().Receieve(gameObject);
             Destroy(gameObject);
         }
 	}
