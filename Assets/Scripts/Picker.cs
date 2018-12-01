@@ -5,14 +5,13 @@ using UnityEngine;
 
 public class Picker : MonoBehaviour
 {
+    public Control control;
     public GameObject nodes;
     public Camera cam;
     public Transform blueprint;
 
     GameObject building = null;
     float pickingRadius = 0.0f;
-
-    Action<GameObject> finished;
 
     int groundMask;
 
@@ -21,13 +20,11 @@ public class Picker : MonoBehaviour
         groundMask = LayerMask.GetMask("Ground");
     }
 
-    public void StartPicking(GameObject building, Action<GameObject> finished)
+    public void StartPicking(GameObject building)
     {
         enabled = true;
 
         this.building = building;
-        this.finished = finished;
-
         building.transform.parent = blueprint;
         building.transform.localPosition = Vector3.zero;
 
@@ -37,23 +34,24 @@ public class Picker : MonoBehaviour
     }
 
     public void StopPicking()
-    {
-        Destroy(this.building);
-        this.building = null;
+    { 
+        building = null;
         blueprint.gameObject.SetActive(false);
-        enabled = false;
-    }
 
-    void FinishPicking()
-    {
-        finished(this.building);
-        this.building = null;
-        blueprint.gameObject.SetActive(false);
+        control.StartIdle();
+
         enabled = false;
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Destroy(building);
+            StopPicking();
+            return;
+        }
+
         var colliders = nodes.GetComponentsInChildren<SphereCollider>();
 
         RaycastHit hit;
@@ -71,7 +69,7 @@ public class Picker : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             building.transform.parent = nodes.transform;
-            FinishPicking();
+            StopPicking();
         }
     }
 }

@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Sheep : MonoBehaviour
 {
-    public Transform city;
+    public Transform destination;
     float completionRadius;
 
     float speed = 0.5f;
 
 	void Start()
 	{
-        completionRadius = city.GetComponent<SphereCollider>().radius;
-        transform.LookAt(city.position);
+        completionRadius = destination.GetComponent<SphereCollider>().radius;
+        transform.LookAt(destination.position);
     }
 	
 	void Update()
 	{
-        if (Vector3.Distance(transform.position, city.position) > completionRadius)
+        if (Vector3.Distance(transform.position, destination.position) > completionRadius)
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
         }

@@ -29,8 +29,7 @@ public class Control : MonoBehaviour
         city.name = "City";
         city.transform.parent = nodes;
 
-        uiAction.SetActive(true);
-        uiBuild.SetActive(false);
+        StartIdle();
     }
 
     void Update()
@@ -50,23 +49,20 @@ public class Control : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                state = State.Idle;
+                StartIdle();
             }
             if (Input.GetKeyDown(KeyCode.F))
             {
-                var farm = Instantiate(this.farm);
-                farm.GetComponent<Farm>().city = city.transform;
-                farm.name = "Farm";
-                StartPicking(farm);
+                BuildFarm();
             }
         }
-        else if (state == State.Picking)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                StopPicking();
-            }
-        }
+    }
+
+    public void StartIdle()
+    {
+        state = State.Idle;
+        uiAction.SetActive(true);
+        uiBuild.SetActive(false);
     }
 
     public void StartBuilding()
@@ -79,7 +75,6 @@ public class Control : MonoBehaviour
     public void BuildFarm()
     {
         var farm = Instantiate(this.farm);
-        farm.GetComponent<Farm>().city = city.transform;
         farm.name = "Farm";
         StartPicking(farm);
     }
@@ -89,21 +84,7 @@ public class Control : MonoBehaviour
         state = State.Picking;
         uiBuild.SetActive(false);
 
-        picker.StartPicking(building, FinishPicking); 
-    }
-
-    void FinishPicking(GameObject building)
-    {
-        state = State.Idle;
-        uiAction.SetActive(true);
-    }
-
-    void StopPicking()
-    {
-        state = State.Idle;
-        uiAction.SetActive(true);
-
-        picker.StopPicking();
+        picker.StartPicking(building);
     }
 
     public void StartRouting()
@@ -111,12 +92,6 @@ public class Control : MonoBehaviour
         state = State.Routing;
         uiAction.SetActive(false);
 
-        router.StartRouting(FinishRouting);
-    }
-
-    void FinishRouting()
-    {
-        state = State.Idle;
-        uiAction.SetActive(true);
+        router.StartRouting();
     }
 }

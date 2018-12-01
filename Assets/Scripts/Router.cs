@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Router : MonoBehaviour
 {
+    public Control control;
     public GameObject roadPrefab;
     public Camera cam;
     public Transform routeFromMarker;
@@ -11,11 +12,7 @@ public class Router : MonoBehaviour
 
     GameObject road;
 
-    GameObject routeFrom;
-    GameObject routeTo;
-
-    public delegate void Finished();
-    Finished finished;
+    RouteHandler routeFrom;
 
     int nodeMask, groundMask;
 
@@ -25,36 +22,55 @@ public class Router : MonoBehaviour
         groundMask = LayerMask.GetMask("Ground");
     }
 
-    public void StartRouting(Finished finished)
+    public void StartRouting()
     {
         enabled = true;
-
-        this.finished = finished;
 
         road = Instantiate(roadPrefab);
         road.name = "Road";
     }
 
+    void StopRouting()
+    {
+        routeFrom = null;
+        routeToMarker.gameObject.SetActive(false);
+        routeFromMarker.gameObject.SetActive(false);
+
+        control.StartIdle();
+
+        enabled = false;
+    }
+
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (road != null) Destroy(road);
+            StopRouting();
+            return;
+        }
+
         RaycastHit hit;
         var ray = cam.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, float.PositiveInfinity, nodeMask))
         {
+            var routeHandler = hit.transform.GetComponent<RouteHandler>();
             if (routeFrom == null)
             {
+                if (!routeHandler.HasAvailableRoutes()) return;
+
                 routeFromMarker.gameObject.SetActive(true);
                 routeFromMarker.position = hit.transform.position;
                 routeFromMarker.localScale = Vector3.one * (hit.collider as SphereCollider).radius;
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    routeFrom = hit.transform.gameObject;
+                    routeFrom = routeHandler;
                     road.GetComponent<LineRenderer>().SetPosition(0, new Vector3(hit.transform.position.x, 0.01f, hit.transform.position.z));
                     road.GetComponent<LineRenderer>().SetPosition(1, new Vector3(hit.transform.position.x, 0.01f, hit.transform.position.z));
                 }
             }
-            else if (hit.transform.gameObject != routeFrom)
+            else if (routeHandler != routeFrom && routeFrom.CanRouteTo((routeHandler as MonoBehaviour).gameObject))
             {
                 routeToMarker.gameObject.SetActive(true);
                 routeToMarker.position = hit.transform.position;
@@ -63,16 +79,10 @@ public class Router : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    routeTo = hit.transform.gameObject;
+                    routeFrom.AddRouteTo((routeHandler as MonoBehaviour).gameObject);
+                    routeHandler.AddRouteFrom((routeFrom as MonoBehaviour).gameObject);
 
-                    routeToMarker.gameObject.SetActive(false);
-                    routeFromMarker.gameObject.SetActive(false);
-                    routeFrom = null;
-                    routeTo = null;
-
-                    finished();
-
-                    enabled = false;
+                    StopRouting();
                 }
             }
         }
