@@ -5,6 +5,7 @@ using UnityEngine;
 public class Control : MonoBehaviour
 {
     public Picker picker;
+    public Router router;
 
     public Transform nodes;
     public GameObject city;
@@ -18,13 +19,15 @@ public class Control : MonoBehaviour
         Idle,
         BuildSelect,
         Picking,
+        Routing,
     }
     State state;
 
     void Start()
     {
-        this.city = Instantiate(this.city, Vector3.zero, Quaternion.identity);
-        this.city.transform.parent = nodes;
+        city = Instantiate(city, Vector3.zero, Quaternion.identity);
+        city.name = "City";
+        city.transform.parent = nodes;
 
         uiAction.SetActive(true);
         uiBuild.SetActive(false);
@@ -37,6 +40,10 @@ public class Control : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.B))
             {
                 StartBuilding();
+            }
+            else if (Input.GetKeyDown(KeyCode.R))
+            {
+                StartRouting();
             }
         }
         else if (state == State.BuildSelect)
@@ -65,7 +72,6 @@ public class Control : MonoBehaviour
     public void StartBuilding()
     {
         state = State.BuildSelect;
-
         uiAction.SetActive(false);
         uiBuild.SetActive(true);
     }
@@ -81,23 +87,36 @@ public class Control : MonoBehaviour
     void StartPicking(GameObject building)
     {
         state = State.Picking;
-        picker.StartPicking(building, FinishPicking);
-
         uiBuild.SetActive(false);
+
+        picker.StartPicking(building, FinishPicking); 
     }
 
     void FinishPicking(GameObject building)
     {
         state = State.Idle;
-
         uiAction.SetActive(true);
     }
 
     void StopPicking()
     {
         state = State.Idle;
-        picker.StopPicking();
+        uiAction.SetActive(true);
 
+        picker.StopPicking();
+    }
+
+    public void StartRouting()
+    {
+        state = State.Routing;
+        uiAction.SetActive(false);
+
+        router.StartRouting(FinishRouting);
+    }
+
+    void FinishRouting()
+    {
+        state = State.Idle;
         uiAction.SetActive(true);
     }
 }

@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 153ce8ef4e5afdf48b3f1861ab17b102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  road: {fileID: 1778399446670904, guid: c830b7dd753bc0f4488a478661a6d9a8, type: 2}
   sheep: {fileID: 1887097585430226, guid: 5eb22b5254431c3429cab7c43b949dcb, type: 2}
   city: {fileID: 0}
 --- !u!135 &135328949767871094

@@ -10,8 +10,9 @@ public class Picker : MonoBehaviour
     public Transform blueprint;
 
     GameObject building = null;
-    Action<GameObject> finished;
     float pickingRadius = 0.0f;
+
+    Action<GameObject> finished;
 
     int groundMask;
 
@@ -32,7 +33,6 @@ public class Picker : MonoBehaviour
 
         pickingRadius = building.GetComponent<SphereCollider>().radius;
 
-        blueprint.gameObject.SetActive(true);
         blueprint.GetChild(0).localScale = new Vector3(pickingRadius, pickingRadius, pickingRadius);
     }
 
@@ -64,6 +64,7 @@ public class Picker : MonoBehaviour
             {
                 if (Vector3.Distance(collider.transform.position, hit.point) < collider.radius + pickingRadius) return;
             }
+            blueprint.gameObject.SetActive(true);
             blueprint.position = hit.point;
         }
 
