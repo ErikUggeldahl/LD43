@@ -10,6 +10,9 @@ public class Control : MonoBehaviour
     public GameObject city;
     public GameObject farm;
 
+    public GameObject uiAction;
+    public GameObject uiBuild;
+
     enum State
     {
         Idle,
@@ -22,6 +25,9 @@ public class Control : MonoBehaviour
     {
         this.city = Instantiate(this.city, Vector3.zero, Quaternion.identity);
         this.city.transform.parent = nodes;
+
+        uiAction.SetActive(true);
+        uiBuild.SetActive(false);
     }
 
     void Update()
@@ -56,25 +62,42 @@ public class Control : MonoBehaviour
         }
     }
 
-    void StartBuilding()
+    public void StartBuilding()
     {
         state = State.BuildSelect;
+
+        uiAction.SetActive(false);
+        uiBuild.SetActive(true);
+    }
+
+    public void BuildFarm()
+    {
+        var farm = Instantiate(this.farm);
+        farm.GetComponent<Farm>().city = city.transform;
+        farm.name = "Farm";
+        StartPicking(farm);
     }
 
     void StartPicking(GameObject building)
     {
         state = State.Picking;
         picker.StartPicking(building, FinishPicking);
+
+        uiBuild.SetActive(false);
     }
 
     void FinishPicking(GameObject building)
     {
         state = State.Idle;
+
+        uiAction.SetActive(true);
     }
 
     void StopPicking()
     {
         state = State.Idle;
         picker.StopPicking();
+
+        uiAction.SetActive(true);
     }
 }
