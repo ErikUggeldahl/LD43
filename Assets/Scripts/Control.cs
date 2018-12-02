@@ -94,7 +94,7 @@ public class Control : MonoBehaviour
 
     bool CanBuild(GameObject building)
     {
-        return building.GetComponent<Building>().cost <= resources.Coins;
+        return DebugControl.Instance.unlimitedCoin ? true : building.GetComponent<Building>().cost <= resources.Coins;
     }
 
     public void BuildFarm()

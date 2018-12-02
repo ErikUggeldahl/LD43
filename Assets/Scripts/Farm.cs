@@ -18,16 +18,12 @@ public class Farm : MonoBehaviour, RouteHandler
         Producing,
     }
     State state = State.Idle;
-
-	void Start()
-	{
-    }
 	
 	void Update()
 	{
         if (state == State.Producing)
         {
-            sheepTimer -= Time.deltaTime;
+            sheepTimer -= Time.deltaTime * DebugControl.Instance.speedMultiplier;
             if (sheepTimer <= 0f)
             {
                 var sheep = Instantiate(this.sheep, transform.position, Quaternion.identity);

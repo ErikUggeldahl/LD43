@@ -19,7 +19,7 @@ public class ResourceTravel : MonoBehaviour
 	{
         if (Vector3.Distance(transform.position, destination.position) > completionRadius)
         {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.Self);
+            transform.Translate(Vector3.forward * speed * DebugControl.Instance.speedMultiplier * Time.deltaTime, Space.Self);
         }
         else
         {

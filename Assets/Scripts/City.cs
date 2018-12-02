@@ -6,14 +6,6 @@ public class City : MonoBehaviour, RouteHandler
 {
     public Resources resources;
 
-    void Start()
-	{
-	}
-	
-	void Update()
-	{
-	}
-
     public bool HasAvailableRoutes()
     {
         return false;

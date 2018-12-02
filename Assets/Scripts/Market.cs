@@ -19,10 +19,6 @@ public class Market : MonoBehaviour, RouteHandler
         Producing,
     }
     State state = State.Idle;
-
-    void Start()
-	{
-	}
 	
 	void Update()
 	{
@@ -30,7 +26,7 @@ public class Market : MonoBehaviour, RouteHandler
         {
             if (coinTimer > 0f)
             {
-                coinTimer -= Time.deltaTime;
+                coinTimer -= Time.deltaTime * DebugControl.Instance.speedMultiplier;
             }
             if (sheepCount > 0 && coinTimer <= 0f)
             {

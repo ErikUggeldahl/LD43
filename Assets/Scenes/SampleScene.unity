@@ -2874,6 +2874,7 @@ GameObject:
   - component: {fileID: 2118459343}
   - component: {fileID: 2118459339}
   - component: {fileID: 2118459342}
+  - component: {fileID: 2118459344}
   m_Layer: 0
   m_Name: Control
   m_TagString: Untagged
@@ -2961,6 +2962,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sacrificeBar: {fileID: 1892112231}
   coinText: {fileID: 857614493}
+--- !u!114 &2118459344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2118459338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ecbbc548efd6a84f8a8d88c5df5ebc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedMultiplier: 1
+  unlimitedCoin: 0
 --- !u!1 &2129157502
 GameObject:
   m_ObjectHideFlags: 0

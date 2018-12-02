@@ -70,7 +70,7 @@ public class Picker : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             building.transform.parent = nodes.transform;
-            control.resources.AddCoin(-building.GetComponent<Building>().cost);
+            if (!DebugControl.Instance.unlimitedCoin) control.resources.AddCoin(-building.GetComponent<Building>().cost);
             StopPicking();
         }
     }
