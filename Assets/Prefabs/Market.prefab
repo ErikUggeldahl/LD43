@@ -245,7 +245,8 @@ MonoBehaviour:
   cost: 10
   accepts: 01000000
   connects: 00000000
-  description: Turns sheep into valuable currency needed for continued building.
+  description: Turns sheep into valuable currency needed for continued building. Can
+    support up to two full time farms.
 --- !u!135 &135328949767871094
 SphereCollider:
   m_ObjectHideFlags: 1
