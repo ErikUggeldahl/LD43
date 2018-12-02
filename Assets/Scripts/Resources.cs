@@ -21,7 +21,7 @@ public class Resources : MonoBehaviour
     void Start()
 	{
         sacrificeBar.localScale = new Vector3(Mathf.Min((float)sacrifices / TOTAL_SACRIFICES, 1f), 1f, 1f);
-        if (coinText) coinText.text = "Coin: " + coins;
+        if (coinText) coinText.text = coins.ToString();
     }
 
     public void AddSacrifice(int value)
@@ -33,7 +33,7 @@ public class Resources : MonoBehaviour
     public void AddCoin(int value)
     {
         coins += value;
-        if(coinText) coinText.text = "Coin: " + coins;
+        if(coinText) coinText.text = coins.ToString();
 
         if (CoinChanged != null) CoinChanged();
     }

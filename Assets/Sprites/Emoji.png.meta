@@ -5,6 +5,7 @@ TextureImporter:
     21300000: Farm
     21300002: Bank
     21300004: Arrow
+    21300006: Coin
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -124,6 +125,26 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 9ae54363d7531554290ba570a6d3367b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Coin
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 411336f73943c444da85d62a0e06c33d
       vertices: []
       indices: 
       edges: []
