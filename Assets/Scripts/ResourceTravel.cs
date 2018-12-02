@@ -12,7 +12,7 @@ public class ResourceTravel : MonoBehaviour
 
     public int value = 1;
 
-    float speed = 1.5f;
+    float speed = 1.75f;
 
 	void Start()
 	{

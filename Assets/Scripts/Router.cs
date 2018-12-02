@@ -83,6 +83,8 @@ public class Router : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(0))
                 {
+                    control.resources.AddCoin(-Router.ROAD_COST);
+
                     routeFrom.AddRouteTo((routeHandler as MonoBehaviour).gameObject);
                     routeHandler.AddRouteFrom((routeFrom as MonoBehaviour).gameObject);
 

@@ -595,7 +595,7 @@ Prefab:
     - target: {fileID: 224276951792798846, guid: 790c23ff88c75184b8963429e2a420cb,
         type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 224276951792798846, guid: 790c23ff88c75184b8963429e2a420cb,
         type: 2}
@@ -1022,7 +1022,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1663496992}
   m_Father: {fileID: 538710647}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3479,6 +3480,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4940954581960118, guid: 98d531c6d4d7a14499366dccb60b2be8,
     type: 2}
   m_PrefabInternal: {fileID: 671350740}
+--- !u!1001 &1394635377
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 298822498}
+    m_Modifications:
+    - target: {fileID: 4431710264755806, guid: ddec644238b0a56488b877396b16471a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431710264755806, guid: ddec644238b0a56488b877396b16471a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431710264755806, guid: ddec644238b0a56488b877396b16471a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431710264755806, guid: ddec644238b0a56488b877396b16471a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431710264755806, guid: ddec644238b0a56488b877396b16471a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431710264755806, guid: ddec644238b0a56488b877396b16471a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431710264755806, guid: ddec644238b0a56488b877396b16471a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431710264755806, guid: ddec644238b0a56488b877396b16471a, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114146373199911448, guid: ddec644238b0a56488b877396b16471a,
+        type: 2}
+      propertyPath: resources
+      value: 
+      objectReference: {fileID: 2118459343}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ddec644238b0a56488b877396b16471a, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &1404157660
 Prefab:
   m_ObjectHideFlags: 0
@@ -3811,6 +3859,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98d531c6d4d7a14499366dccb60b2be8, type: 2}
   m_IsPrefabAsset: 0
+--- !u!4 &1663496992 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4431710264755806, guid: ddec644238b0a56488b877396b16471a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1394635377}
 --- !u!4 &1678922782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4940954581960118, guid: 98d531c6d4d7a14499366dccb60b2be8,
@@ -3861,7 +3914,7 @@ Prefab:
     - target: {fileID: 224276951792798846, guid: 790c23ff88c75184b8963429e2a420cb,
         type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 224276951792798846, guid: 790c23ff88c75184b8963429e2a420cb,
         type: 2}
@@ -4566,13 +4619,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resources: {fileID: 2118459343}
+  buildings: {fileID: 557552470}
   picker: {fileID: 2118459339}
   router: {fileID: 2118459342}
   nodes: {fileID: 298822498}
-  city: {fileID: 1825220237392024, guid: ddec644238b0a56488b877396b16471a, type: 2}
-  farm: {fileID: 1579913721565420, guid: a7034be077559f6478179f8cf1e637cc, type: 2}
-  market: {fileID: 1579913721565420, guid: df2e9660ccf3bad46a1673e83fb1a4a4, type: 2}
-  grainSilo: {fileID: 1536933132548370, guid: ca71c4955a5637c408e24d4af4869080, type: 2}
   uiAction: {fileID: 775488508}
   uiBuild: {fileID: 13252018}
 --- !u!114 &2118459342

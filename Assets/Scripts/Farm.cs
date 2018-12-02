@@ -11,7 +11,7 @@ public class Farm : MonoBehaviour, RouteHandler
     List<Transform> destinations = new List<Transform>();
     int currentDestination = 0;
 
-    float sheepTimerMax = 2.5f;
+    float sheepTimerMax = 2f;
     float sheepTimer = 0;
 
     Transform grainSilo = null;

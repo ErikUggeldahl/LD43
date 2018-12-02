@@ -9,7 +9,7 @@ public class Market : MonoBehaviour, RouteHandler
 
     List<Transform> destinations = new List<Transform>();
 
-    float cointTimerMax = 1.25f;
+    float cointTimerMax = 1f;
     float coinTimer = 0;
 
     int sheepCount = 0;

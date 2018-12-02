@@ -12,7 +12,7 @@ public class NPCControl : MonoBehaviour
     public Transform nodes;
     public Transform roads;
 
-    const float DECISION_DOWNTIME = 3f;
+    const float DECISION_DOWNTIME = 1.5f;
     float Downtime { get { return DECISION_DOWNTIME / (DebugControl.Instance.decisionsAtSpeed ? DebugControl.Instance.speedMultiplier : 1f); } }
 
     bool acting = true;

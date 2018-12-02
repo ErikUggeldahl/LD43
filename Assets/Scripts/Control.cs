@@ -6,14 +6,11 @@ using UnityEngine.UI;
 public class Control : MonoBehaviour
 {
     public Resources resources;
+    public AllBuildings buildings;
     public Picker picker;
     public Router router;
 
     public Transform nodes;
-    public GameObject city;
-    public GameObject farm;
-    public GameObject market;
-    public GameObject grainSilo;
 
     public GameObject uiAction;
     public GameObject uiBuild;
@@ -29,12 +26,8 @@ public class Control : MonoBehaviour
 
     void Start()
     {
+        resources.CoinChanged += UpdateActionButtonInteraction;
         resources.CoinChanged += UpdateBuildButtonInteraction;
-
-        city = Instantiate(city, Vector3.zero, Quaternion.identity);
-        city.name = "City";
-        city.GetComponent<City>().resources = resources;
-        city.transform.parent = nodes;
 
         foreach (var button in uiBuild.GetComponentsInChildren<Button>())
         {
@@ -65,15 +58,15 @@ public class Control : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.F))
             {
-                StartPicking(farm);
+                StartPicking(buildings.farm);
             }
             else if (Input.GetKeyDown(KeyCode.M))
             {
-                StartPicking(market);
+                StartPicking(buildings.market);
             }
             else if (Input.GetKeyDown(KeyCode.G))
             {
-                StartPicking(grainSilo);
+                StartPicking(buildings.grainSilo);
             }
         }
     }
@@ -92,6 +85,11 @@ public class Control : MonoBehaviour
         uiBuild.SetActive(true);
 
         UpdateBuildButtonInteraction();
+    }
+
+    void UpdateActionButtonInteraction()
+    {
+        uiAction.transform.Find("RouteButton").GetComponent<Button>().interactable = CanRoute();
     }
 
     void UpdateBuildButtonInteraction()
@@ -117,8 +115,15 @@ public class Control : MonoBehaviour
         picker.StartPicking(building);
     }
 
+    bool CanRoute()
+    {
+        return resources.Coins >= Router.ROAD_COST;
+    }
+
     public void StartRouting()
     {
+        if (!CanRoute()) return;
+
         state = State.Routing;
         uiAction.SetActive(false);
 
