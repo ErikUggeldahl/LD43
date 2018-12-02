@@ -243,11 +243,12 @@ MonoBehaviour:
   type: 0
   displayName: City
   cost: 0
-  accepts: 0100000002000000
+  accepts: 010000000200000004000000
   connects: 
   description: 
   randomWeight: 0
   removeRouteChance: 0
+  owner: 0
 --- !u!135 &135926406025970524
 SphereCollider:
   m_ObjectHideFlags: 1

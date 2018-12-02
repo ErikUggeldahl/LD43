@@ -243,12 +243,13 @@ MonoBehaviour:
   type: 2
   displayName: Market
   cost: 10
-  accepts: 01000000
+  accepts: 0100000004000000
   connects: 0000000004000000
   description: Turns sheep into valuable currency needed for continued building. Can
     support up to two full time farms.
   randomWeight: 2
   removeRouteChance: 0.5
+  owner: 0
 --- !u!135 &135328949767871094
 SphereCollider:
   m_ObjectHideFlags: 1

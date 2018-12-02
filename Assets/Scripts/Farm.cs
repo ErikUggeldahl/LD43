@@ -37,17 +37,13 @@ public class Farm : MonoBehaviour, RouteHandler
                 var sheep = Instantiate(this.sheep, transform.position, Quaternion.identity);
                 sheep.name = "Sheep";
                 var traveller = sheep.GetComponent<ResourceTravel>();
+
                 if (thieves.Count > 0)
                 {
                     var firstThief = thieves[0];
                     thieves.RemoveAt(0);
 
-                    firstThief.Destination = firstThief.origin;
-                    sheep.transform.parent = firstThief.transform.GetComponent<AttachPoint>().attachPoint;
-                    sheep.transform.localPosition = Vector3.zero;
-                    sheep.transform.localRotation = Quaternion.identity;
-                    sheep.GetComponentInChildren<Animation>().Stop();
-                    Destroy(traveller);
+                    ThievesDen.ThieveTraveller(sheep.transform, firstThief.transform);
                 }
                 else if (grainSilo)
                 {
@@ -112,7 +108,17 @@ public class Farm : MonoBehaviour, RouteHandler
         }
         else
         {
-            traveller.Destination = destinations[NextDestination()];
+            if (thieves.Count > 0)
+            {
+                var firstThief = thieves[0];
+                thieves.RemoveAt(0);
+
+                ThievesDen.ThieveTraveller(traveller.transform, firstThief.transform);
+            }
+            else
+            {
+                traveller.Destination = destinations[NextDestination()];
+            }
         }
     }
 }

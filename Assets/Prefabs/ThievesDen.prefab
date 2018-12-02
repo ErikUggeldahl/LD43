@@ -203,9 +203,10 @@ MonoBehaviour:
   displayName: Thieves Den
   cost: 30
   accepts: 02000000
-  connects: 01000000
-  description: Consumes coins from a market to hire thieves to steal sheep from neighbouring
-    cities.
+  connects: 010000000200000000000000
+  description: Consumes coins from a market to hire thieves to steal sheep or coin
+    from neighbouring cities. Connect to your city to have the thieves turn their
+    wares into coin.
   randomWeight: 1
   removeRouteChance: 1
   owner: 0

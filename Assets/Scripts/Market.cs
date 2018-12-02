@@ -10,6 +10,9 @@ public class Market : MonoBehaviour, RouteHandler
     List<Transform> destinations = new List<Transform>();
     int currentDestination = 0;
 
+    const int MAX_THIEVES = 3;
+    List<ResourceTravel> thieves = new List<ResourceTravel>();
+
     const float COIN_TIMER_MAX = 1f;
     float coinTimer = 0;
 
@@ -34,7 +37,18 @@ public class Market : MonoBehaviour, RouteHandler
             {
                 var coin = Instantiate(this.coin, transform.position, Quaternion.identity);
                 coin.name = "Coin";
-                coin.GetComponent<ResourceTravel>().Destination = destinations[NextDestination()];
+
+                if (thieves.Count > 0)
+                {
+                    var firstThief = thieves[0];
+                    thieves.RemoveAt(0);
+
+                    ThievesDen.ThieveTraveller(coin.transform, firstThief.transform);
+                }
+                else
+                {
+                    coin.GetComponent<ResourceTravel>().Destination = destinations[NextDestination()];
+                }
 
                 coinTimer += COIN_TIMER_MAX;
                 sheepStore--;
@@ -72,10 +86,22 @@ public class Market : MonoBehaviour, RouteHandler
 
     public void Receieve(ResourceTravel traveller)
     {
-        if (traveller.tag == "Sheep")
+        if (traveller.tag == "Thief")
+        {
+            if (thieves.Count >= MAX_THIEVES)
+            {
+                Destroy(traveller.gameObject);
+            }
+            else
+            {
+                traveller.Destination = null;
+                thieves.Add(traveller);
+            }
+        }
+        else if (traveller.tag == "Sheep")
         {
             sheepStore += traveller.value;
+            Destroy(traveller.gameObject);
         }
-        Destroy(traveller.gameObject);
     }
 }

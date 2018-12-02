@@ -31,7 +31,7 @@ public class City : MonoBehaviour, RouteHandler
         {
             resources.AddSacrifice(traveller.value);
         }
-        else if (traveller.tag == "Coin")
+        else if (traveller.tag == "Coin" || traveller.tag == "Thief")
         {
             resources.AddCoin(traveller.value);
         }

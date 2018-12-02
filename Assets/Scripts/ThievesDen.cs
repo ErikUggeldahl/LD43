@@ -17,6 +17,8 @@ public class ThievesDen : MonoBehaviour, RouteHandler
     const int THIEF_COST = 3;
     int coinStore = 0;
 
+    Transform city = null;
+
     enum State
     {
         Idle,
@@ -47,22 +49,51 @@ public class ThievesDen : MonoBehaviour, RouteHandler
         }
     }
 
+    public static void ThieveTraveller(Transform traveller, Transform thief)
+    {
+        var thiefTravel = thief.GetComponent<ResourceTravel>();
+        var travellerTravel = traveller.GetComponent<ResourceTravel>();
+
+        thiefTravel.Destination = thiefTravel.origin;
+        thiefTravel.value = travellerTravel.value;
+        traveller.parent = thief.transform.GetComponent<AttachPoint>().attachPoint;
+        traveller.localPosition = Vector3.zero;
+        traveller.localRotation = Quaternion.identity;
+        traveller.GetComponentInChildren<Animation>().Stop();
+        Destroy(traveller.GetComponent<ResourceTravel>());
+    }
+
     public bool HasAvailableRoutes()
     {
-        return destination == null;
+        return destination == null || city == null;
     }
 
     public bool CanRouteTo(GameObject to)
     {
         var building = GetComponent<Building>();
         var toBuilding = to.GetComponent<Building>();
-        return Array.IndexOf(building.connects, toBuilding.type) != -1 &&
-            building.owner != toBuilding.owner;
+
+        if (toBuilding.type == Building.Type.City)
+        {
+            return building.owner == toBuilding.owner && city == null;
+        }
+        else
+        {
+            return Array.IndexOf(building.connects, toBuilding.type) != -1 &&
+                building.owner != toBuilding.owner;
+        }
     }
 
     public void AddRouteTo(GameObject to)
     {
-        destination = to.transform;
+        if (to.GetComponent<Building>().type == Building.Type.City)
+        {
+            city = to.transform;
+        }
+        else
+        {
+            destination = to.transform;
+        }
     }
 
     public void AddRouteFrom(GameObject from)
@@ -75,7 +106,15 @@ public class ThievesDen : MonoBehaviour, RouteHandler
         if (traveller.tag == "Coin")
         {
             coinStore += traveller.value;
+            Destroy(traveller.gameObject);
         }
-        Destroy(traveller.gameObject);
+        else if (traveller.tag == "Thief" && city)
+        {
+            traveller.Destination = city;
+        }
+        else
+        {
+            Destroy(traveller.gameObject);
+        }
     }
 }
