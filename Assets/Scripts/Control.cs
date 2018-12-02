@@ -21,6 +21,7 @@ public class Control : MonoBehaviour
     public GameObject tutorialOpponentBarArrow;
     public TutorialBarOscillator tutorialBar;
     public TutorialBarOscillator tutorialOpponentBar;
+    public Transform tutorialCamera;
 
     enum State
     {
@@ -242,10 +243,19 @@ public class Control : MonoBehaviour
 
         yield return Wait(6f);
 
+        Vector3 originalCamPosition = tutorialCamera.position;
+
+        tutorialText.text = FormatTutorialText("SURVEY THE LAND WITH\nW, S, A, OR D.");
+
+        while (tutorialCamera.position == originalCamPosition)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+
         tutorialOpponentBar.enabled = false;
         tutorialOpponentBarArrow.SetActive(false);
 
-        tutorialText.text = FormatTutorialText("BEGIN BY BUILDING ME A FARM ADJACENT TO MY CITY.");
+        tutorialText.text = FormatTutorialText("IT IS YOURS TO REAP.\nBEGIN BY BUILDING ME A FARM ADJACENT TO MY CITY.");
 
         stage = TutorialStage.BuildFarm;
         UpdateActionButtonInteraction();

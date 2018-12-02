@@ -5415,6 +5415,7 @@ MonoBehaviour:
   tutorialOpponentBarArrow: {fileID: 1309665414}
   tutorialBar: {fileID: 1892112234}
   tutorialOpponentBar: {fileID: 2075514951}
+  tutorialCamera: {fileID: 534669905}
 --- !u!114 &2118459342
 MonoBehaviour:
   m_ObjectHideFlags: 0
