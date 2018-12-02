@@ -33,7 +33,7 @@ public class Market : MonoBehaviour, RouteHandler
             {
                 var coin = Instantiate(this.coin, transform.position, Quaternion.identity);
                 coin.name = "Coin";
-                coin.GetComponent<ResourceTravel>().destination = destinations[0];
+                coin.GetComponent<ResourceTravel>().Destination = destinations[0];
 
                 coinTimer += cointTimerMax;
                 sheepCount--;
@@ -68,5 +68,6 @@ public class Market : MonoBehaviour, RouteHandler
         {
             sheepCount += traveller.value;
         }
+        Destroy(traveller.gameObject);
     }
 }

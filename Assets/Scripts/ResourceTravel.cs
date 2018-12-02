@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class ResourceTravel : MonoBehaviour
 {
-    public Transform destination;
+    public Transform Destination { set { destination = value; transform.LookAt(destination.position); } }
+    Transform destination;
     float completionRadius;
+
+    public Transform travellingFrom;
 
     public int value = 1;
 
@@ -26,7 +29,6 @@ public class ResourceTravel : MonoBehaviour
         else
         {
             destination.GetComponent<RouteHandler>().Receieve(this);
-            Destroy(gameObject);
         }
 	}
 }

@@ -13,7 +13,7 @@ public class Farm : MonoBehaviour, RouteHandler
     float sheepTimerMax = 2.5f;
     float sheepTimer = 0;
 
-    bool grainFed = false;
+    Transform grainSilo = null;
 
     enum State
     {
@@ -31,19 +31,28 @@ public class Farm : MonoBehaviour, RouteHandler
             {
                 var sheep = Instantiate(this.sheep, transform.position, Quaternion.identity);
                 sheep.name = "Sheep";
-                var resourceTravel = sheep.GetComponent<ResourceTravel>();
-                resourceTravel.destination = destinations[currentDestination++];
-                if (grainFed)
+                var traveller = sheep.GetComponent<ResourceTravel>();
+                if (grainSilo)
                 {
-                    sheep.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-                    resourceTravel.value = 2;
+                    traveller.Destination = grainSilo;
+                    traveller.travellingFrom = transform;
+                }
+                else
+                {
+                    traveller.Destination = destinations[NextDestination()];
                 }
 
-                currentDestination %= destinations.Count;
                 sheepTimer += sheepTimerMax;
             }
         }
 	}
+    
+    int NextDestination()
+    {
+        currentDestination++;
+        currentDestination %= destinations.Count;
+        return currentDestination;
+    }
 
     public bool HasAvailableRoutes()
     {
@@ -66,11 +75,12 @@ public class Farm : MonoBehaviour, RouteHandler
     {
         if (from.GetComponent<Building>().type == Building.Type.GrainSilo)
         {
-            grainFed = true;
+            grainSilo = from.transform;
         }
     }
 
     public void Receieve(ResourceTravel traveller)
     {
+        traveller.Destination = destinations[NextDestination()];
     }
 }

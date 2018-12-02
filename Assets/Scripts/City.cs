@@ -35,5 +35,6 @@ public class City : MonoBehaviour, RouteHandler
         {
             resources.AddCoin(traveller.value);
         }
+        Destroy(traveller.gameObject);
     }
 }

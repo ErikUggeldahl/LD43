@@ -31,6 +31,8 @@ public class GrainSilo : MonoBehaviour, RouteHandler
 
     public void Receieve(ResourceTravel traveller)
     {
-        throw new NotImplementedException();
+        traveller.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        traveller.value = 2;
+        traveller.Destination = traveller.travellingFrom;
     }
 }
