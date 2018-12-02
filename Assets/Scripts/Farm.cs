@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using System.Linq;
 public class Farm : MonoBehaviour, RouteHandler
 {
     public GameObject sheep;
@@ -14,6 +15,7 @@ public class Farm : MonoBehaviour, RouteHandler
     float sheepTimer = 0;
 
     Transform grainSilo = null;
+    public bool HasGrainSilo { get { return grainSilo; } }
 
     enum State
     {

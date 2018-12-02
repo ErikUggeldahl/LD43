@@ -16,7 +16,9 @@ public class GrainSilo : MonoBehaviour, RouteHandler
     public bool CanRouteTo(GameObject to)
     {
         if (farmsSupported.Contains(to.transform)) return false;
-        return Array.IndexOf(GetComponent<Building>().connects, to.GetComponent<Building>().type) != -1;
+        var toBuilding = to.GetComponent<Building>();
+        if (toBuilding.type == Building.Type.Farm && toBuilding.GetComponent<Farm>().HasGrainSilo) return false;
+        return Array.IndexOf(GetComponent<Building>().connects, toBuilding.type) != -1;
     }
 
     public void AddRouteTo(GameObject to)

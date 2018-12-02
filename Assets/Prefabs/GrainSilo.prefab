@@ -215,7 +215,10 @@ MonoBehaviour:
   cost: 20
   accepts: 
   connects: 01000000
-  description: An addition for up to two farms. Increases their rate of production.
+  description: An addition for up to two farms. Sheep travel to the grain silo to
+    double in value before returning and then routing to their final destination.
+  randomWeight: 2
+  removeRouteChance: 0
 --- !u!135 &135494047280153614
 SphereCollider:
   m_ObjectHideFlags: 1

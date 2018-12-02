@@ -202,10 +202,13 @@ MonoBehaviour:
   type: 1
   displayName: Farm
   cost: 5
-  accepts: 
+  accepts: 03000000
   connects: 0000000002000000
   description: A fundamental building that produces sheep needed for sacrifices. Connect
-    a silo to turn its production into cows, which are a more valuable sacrifice.
+    to a market to receive coin for each sheep. Connect a silo to double the value
+    of its production.
+  randomWeight: 6
+  removeRouteChance: 0.3
 --- !u!114 &114986947892239500
 MonoBehaviour:
   m_ObjectHideFlags: 1

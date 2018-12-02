@@ -19,21 +19,21 @@ public class Resources : MonoBehaviour
 
     void Start()
 	{
-        sacrificeBar.localScale = new Vector3((float)sacrifices / TOTAL_SACRIFICES, 1f, 1f);
-        coinText.text = "Coin: " + coins;
+        sacrificeBar.localScale = new Vector3(Mathf.Min((float)sacrifices / TOTAL_SACRIFICES, 1f), 1f, 1f);
+        if (coinText) coinText.text = "Coin: " + coins;
     }
 
     public void AddSacrifice(int value)
     {
         sacrifices += value;
-        sacrificeBar.localScale = new Vector3((float)sacrifices / TOTAL_SACRIFICES, 1f, 1f);
+        sacrificeBar.localScale = new Vector3(Mathf.Min((float)sacrifices / TOTAL_SACRIFICES, 1f), 1f, 1f);
     }
 
     public void AddCoin(int value)
     {
         coins += value;
-        coinText.text = "Coin: " + coins;
+        if(coinText) coinText.text = "Coin: " + coins;
 
-        CoinChanged();
+        if (CoinChanged != null) CoinChanged();
     }
 }

@@ -5,13 +5,15 @@ using UnityEngine;
 public class Router : MonoBehaviour
 {
     public Control control;
+    public Transform roads;
     public GameObject roadPrefab;
     public Camera cam;
     public Transform routeFromMarker;
     public Transform routeToMarker;
 
     GameObject road;
-    const float ROAD_HEIGHT = 0.07f;
+    public const float ROAD_HEIGHT = 0.07f;
+    public const int ROAD_COST = 2;
 
     RouteHandler routeFrom;
 
@@ -29,6 +31,7 @@ public class Router : MonoBehaviour
 
         road = Instantiate(roadPrefab);
         road.name = "Road";
+        road.transform.parent = roads;
     }
 
     void StopRouting()

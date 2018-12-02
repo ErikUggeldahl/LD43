@@ -19,4 +19,6 @@ public class Building : MonoBehaviour
     public Type[] connects;
     [TextArea]
     public string description;
+    public int randomWeight;
+    public float removeRouteChance;
 }

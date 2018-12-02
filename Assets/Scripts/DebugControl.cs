@@ -24,8 +24,10 @@ public class DebugControl : MonoBehaviour
         instance = null;
     }
 
-    [Range(0.25f, 5f)]
+    [Range(0.25f, 10f)]
     public float speedMultiplier = 1f;
+
+    public bool decisionsAtSpeed = true;
 
     public bool unlimitedCoin = false;
 }

@@ -247,6 +247,8 @@ MonoBehaviour:
   connects: 00000000
   description: Turns sheep into valuable currency needed for continued building. Can
     support up to two full time farms.
+  randomWeight: 2
+  removeRouteChance: 0.5
 --- !u!135 &135328949767871094
 SphereCollider:
   m_ObjectHideFlags: 1
