@@ -13,7 +13,7 @@ public class City : MonoBehaviour, RouteHandler
 
     public bool CanRouteTo(GameObject to)
     {
-        return true;
+        throw new System.NotImplementedException();
     }
 
     public void AddRouteTo(GameObject to)
@@ -25,15 +25,15 @@ public class City : MonoBehaviour, RouteHandler
     {
     }
 
-    public void Receieve(GameObject traveller)
+    public void Receieve(ResourceTravel traveller)
     {
         if (traveller.tag == "Sheep")
         {
-            resources.AddSacrifice();
+            resources.AddSacrifice(traveller.value);
         }
         else if (traveller.tag == "Coin")
         {
-            resources.AddCoin(1);
+            resources.AddCoin(traveller.value);
         }
     }
 }

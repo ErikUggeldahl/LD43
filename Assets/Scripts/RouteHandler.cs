@@ -10,5 +10,5 @@ public interface RouteHandler
 
     void AddRouteFrom(GameObject from);
 
-    void Receieve(GameObject traveller);
+    void Receieve(ResourceTravel traveller);
 }

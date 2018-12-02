@@ -23,9 +23,9 @@ public class Resources : MonoBehaviour
         coinText.text = "Coin: " + coins;
     }
 
-    public void AddSacrifice()
+    public void AddSacrifice(int value)
     {
-        sacrifices++;
+        sacrifices += value;
         sacrificeBar.localScale = new Vector3((float)sacrifices / TOTAL_SACRIFICES, 1f, 1f);
     }
 

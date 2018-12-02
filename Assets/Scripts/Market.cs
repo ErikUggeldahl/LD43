@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ public class Market : MonoBehaviour, RouteHandler
     float cointTimerMax = 1.25f;
     float coinTimer = 0;
 
-    uint sheepCount = 0;
+    int sheepCount = 0;
 
     enum State
     {
@@ -48,7 +49,7 @@ public class Market : MonoBehaviour, RouteHandler
     public bool CanRouteTo(GameObject to)
     {
         if (destinations.Contains(to.transform)) return false;
-        return to.tag == "City";
+        return Array.IndexOf(GetComponent<Building>().connects, to.GetComponent<Building>().type) != -1;
     }
 
     public void AddRouteTo(GameObject to)
@@ -61,11 +62,11 @@ public class Market : MonoBehaviour, RouteHandler
     {
     }
 
-    public void Receieve(GameObject traveller)
+    public void Receieve(ResourceTravel traveller)
     {
         if (traveller.tag == "Sheep")
         {
-            sheepCount++;
+            sheepCount += traveller.value;
         }
     }
 }

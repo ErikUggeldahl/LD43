@@ -9,6 +9,7 @@ public class Building : MonoBehaviour
         City,
         Farm,
         Market,
+        GrainSilo,
     }
 
     public Type type;

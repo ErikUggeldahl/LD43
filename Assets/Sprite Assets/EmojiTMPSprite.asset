@@ -60,7 +60,7 @@ MonoBehaviour:
     scale: 1
     name: Farm
     hashCode: 2620600
-    unicode: 127806
+    unicode: 128105
     pivot: {x: 0.5, y: 0.5}
     sprite: {fileID: 0}
   - id: 1
@@ -78,16 +78,16 @@ MonoBehaviour:
     pivot: {x: 0.5, y: 0.5}
     sprite: {fileID: 0}
   - id: 2
-    x: 256
-    y: 384
-    width: 128
-    height: 128
+    x: 128
+    y: 0
+    width: 64
+    height: 64
     xOffset: 0
-    yOffset: 115.6
-    xAdvance: 128
+    yOffset: 64
+    xAdvance: 64
     scale: 1
-    name: 1f60d
-    hashCode: 57188341
+    name: Grain Silo
+    hashCode: -441528854
     unicode: 128525
     pivot: {x: 0.5, y: 0.5}
     sprite: {fileID: 0}

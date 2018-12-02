@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class Farm : MonoBehaviour, RouteHandler
 
     float sheepTimerMax = 2.5f;
     float sheepTimer = 0;
+
+    bool grainFed = false;
 
     enum State
     {
@@ -28,7 +31,13 @@ public class Farm : MonoBehaviour, RouteHandler
             {
                 var sheep = Instantiate(this.sheep, transform.position, Quaternion.identity);
                 sheep.name = "Sheep";
-                sheep.GetComponent<ResourceTravel>().destination = destinations[currentDestination++];
+                var resourceTravel = sheep.GetComponent<ResourceTravel>();
+                resourceTravel.destination = destinations[currentDestination++];
+                if (grainFed)
+                {
+                    sheep.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                    resourceTravel.value = 2;
+                }
 
                 currentDestination %= destinations.Count;
                 sheepTimer += sheepTimerMax;
@@ -44,7 +53,7 @@ public class Farm : MonoBehaviour, RouteHandler
     public bool CanRouteTo(GameObject to)
     {
         if (destinations.Contains(to.transform)) return false;
-        return to.tag == "City" || to.tag == "Market";
+        return Array.IndexOf(GetComponent<Building>().connects, to.GetComponent<Building>().type) != -1;
     }
 
     public void AddRouteTo(GameObject to)
@@ -55,9 +64,13 @@ public class Farm : MonoBehaviour, RouteHandler
 
     public void AddRouteFrom(GameObject from)
     {
+        if (from.GetComponent<Building>().type == Building.Type.GrainSilo)
+        {
+            grainFed = true;
+        }
     }
 
-    public void Receieve(GameObject traveller)
+    public void Receieve(ResourceTravel traveller)
     {
     }
 }

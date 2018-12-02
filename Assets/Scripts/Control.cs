@@ -13,6 +13,7 @@ public class Control : MonoBehaviour
     public GameObject city;
     public GameObject farm;
     public GameObject market;
+    public GameObject grainSilo;
 
     public GameObject uiAction;
     public GameObject uiBuild;
@@ -34,6 +35,11 @@ public class Control : MonoBehaviour
         city.name = "City";
         city.GetComponent<City>().resources = resources;
         city.transform.parent = nodes;
+
+        foreach (var button in uiBuild.GetComponentsInChildren<Button>())
+        {
+            button.onClick.AddListener(() => StartPicking(button.GetComponent<TooltipHover>().represent));
+        }
 
         StartIdle();
     }
@@ -57,13 +63,17 @@ public class Control : MonoBehaviour
             {
                 StartIdle();
             }
-            if (Input.GetKeyDown(KeyCode.F))
+            else if (Input.GetKeyDown(KeyCode.F))
             {
-                BuildFarm();
+                StartPicking(farm);
             }
-            if (Input.GetKeyDown(KeyCode.M))
+            else if (Input.GetKeyDown(KeyCode.M))
             {
-                BuildMarket();
+                StartPicking(market);
+            }
+            else if (Input.GetKeyDown(KeyCode.G))
+            {
+                StartPicking(grainSilo);
             }
         }
     }
@@ -95,16 +105,6 @@ public class Control : MonoBehaviour
     bool CanBuild(GameObject building)
     {
         return DebugControl.Instance.unlimitedCoin ? true : building.GetComponent<Building>().cost <= resources.Coins;
-    }
-
-    public void BuildFarm()
-    {
-        StartPicking(farm);
-    }
-
-    public void BuildMarket()
-    {
-        StartPicking(market);
     }
 
     void StartPicking(GameObject building)
