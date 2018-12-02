@@ -68,6 +68,10 @@ public class Control : MonoBehaviour
             {
                 StartPicking(buildings.grainSilo);
             }
+            else if (Input.GetKeyDown(KeyCode.T))
+            {
+                StartPicking(buildings.thievesDen);
+            }
         }
     }
 
@@ -117,7 +121,7 @@ public class Control : MonoBehaviour
 
     bool CanRoute()
     {
-        return resources.Coins >= Router.ROAD_COST;
+        return DebugControl.Instance.unlimitedCoin ? true : resources.Coins >= Router.ROAD_COST;
     }
 
     public void StartRouting()

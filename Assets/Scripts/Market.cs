@@ -8,11 +8,12 @@ public class Market : MonoBehaviour, RouteHandler
     public GameObject coin;
 
     List<Transform> destinations = new List<Transform>();
+    int currentDestination = 0;
 
-    float cointTimerMax = 1f;
+    const float COIN_TIMER_MAX = 1f;
     float coinTimer = 0;
 
-    int sheepCount = 0;
+    int sheepStore = 0;
 
     enum State
     {
@@ -29,16 +30,23 @@ public class Market : MonoBehaviour, RouteHandler
             {
                 coinTimer -= Time.deltaTime * DebugControl.Instance.speedMultiplier;
             }
-            if (sheepCount > 0 && coinTimer <= 0f)
+            if (sheepStore > 0 && coinTimer <= 0f)
             {
                 var coin = Instantiate(this.coin, transform.position, Quaternion.identity);
                 coin.name = "Coin";
-                coin.GetComponent<ResourceTravel>().Destination = destinations[0];
+                coin.GetComponent<ResourceTravel>().Destination = destinations[NextDestination()];
 
-                coinTimer += cointTimerMax;
-                sheepCount--;
+                coinTimer += COIN_TIMER_MAX;
+                sheepStore--;
             }
         }
+    }
+
+    int NextDestination()
+    {
+        currentDestination++;
+        currentDestination %= destinations.Count;
+        return currentDestination;
     }
 
     public bool HasAvailableRoutes()
@@ -66,7 +74,7 @@ public class Market : MonoBehaviour, RouteHandler
     {
         if (traveller.tag == "Sheep")
         {
-            sheepCount += traveller.value;
+            sheepStore += traveller.value;
         }
         Destroy(traveller.gameObject);
     }

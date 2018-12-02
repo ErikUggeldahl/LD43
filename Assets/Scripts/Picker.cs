@@ -25,7 +25,9 @@ public class Picker : MonoBehaviour
         enabled = true;
 
         building = Instantiate(buildingPrefab);
-        building.name = buildingPrefab.GetComponent<Building>().displayName;
+        var buildingComp = building.GetComponent<Building>();
+        building.name = buildingComp.displayName;
+        buildingComp.owner = 0;
         building.transform.parent = blueprint;
         building.transform.localPosition = Vector3.zero;
 

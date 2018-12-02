@@ -4,11 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - City
-  - Farm
-  - Market
   - Sheep
   - Coin
+  - Thief
   layers:
   - Default
   - TransparentFX

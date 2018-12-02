@@ -10,6 +10,7 @@ public class AllBuildings : MonoBehaviour
     public GameObject farm;
     public GameObject market;
     public GameObject grainSilo;
+    public GameObject thievesDen;
 
     int weightedTotal;
     List<GameObject> all;
@@ -22,6 +23,7 @@ public class AllBuildings : MonoBehaviour
             farm,
             market,
             grainSilo,
+            thievesDen,
         };
         weightedTotal = All.Aggregate(0, (sum, go) => sum + go.GetComponent<Building>().randomWeight);
     }

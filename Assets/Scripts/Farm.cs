@@ -11,7 +11,10 @@ public class Farm : MonoBehaviour, RouteHandler
     List<Transform> destinations = new List<Transform>();
     int currentDestination = 0;
 
-    float sheepTimerMax = 2f;
+    const int MAX_THIEVES = 3;
+    List<ResourceTravel> thieves = new List<ResourceTravel>();
+
+    const float SHEEP_TIMER_MAX = 2f;
     float sheepTimer = 0;
 
     Transform grainSilo = null;
@@ -34,17 +37,29 @@ public class Farm : MonoBehaviour, RouteHandler
                 var sheep = Instantiate(this.sheep, transform.position, Quaternion.identity);
                 sheep.name = "Sheep";
                 var traveller = sheep.GetComponent<ResourceTravel>();
-                if (grainSilo)
+                if (thieves.Count > 0)
+                {
+                    var firstThief = thieves[0];
+                    thieves.RemoveAt(0);
+
+                    firstThief.Destination = firstThief.origin;
+                    sheep.transform.parent = firstThief.transform.GetComponent<AttachPoint>().attachPoint;
+                    sheep.transform.localPosition = Vector3.zero;
+                    sheep.transform.localRotation = Quaternion.identity;
+                    sheep.GetComponentInChildren<Animation>().Stop();
+                    Destroy(traveller);
+                }
+                else if (grainSilo)
                 {
                     traveller.Destination = grainSilo;
-                    traveller.travellingFrom = transform;
+                    traveller.origin = transform;
                 }
                 else
                 {
                     traveller.Destination = destinations[NextDestination()];
                 }
 
-                sheepTimer += sheepTimerMax;
+                sheepTimer += SHEEP_TIMER_MAX;
             }
         }
 	}
@@ -83,6 +98,21 @@ public class Farm : MonoBehaviour, RouteHandler
 
     public void Receieve(ResourceTravel traveller)
     {
-        traveller.Destination = destinations[NextDestination()];
+        if (traveller.tag == "Thief")
+        {
+            if (thieves.Count >= MAX_THIEVES)
+            {
+                Destroy(traveller.gameObject);
+            }
+            else
+            {
+                traveller.Destination = null;
+                thieves.Add(traveller);
+            }
+        }
+        else
+        {
+            traveller.Destination = destinations[NextDestination()];
+        }
     }
 }

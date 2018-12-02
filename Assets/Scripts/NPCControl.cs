@@ -12,6 +12,8 @@ public class NPCControl : MonoBehaviour
     public Transform nodes;
     public Transform roads;
 
+    public int playerNumber;
+
     const float DECISION_DOWNTIME = 1.5f;
     float Downtime { get { return DECISION_DOWNTIME / (DebugControl.Instance.decisionsAtSpeed ? DebugControl.Instance.speedMultiplier : 1f); } }
 
@@ -93,6 +95,7 @@ public class NPCControl : MonoBehaviour
         buildingObj.transform.parent = nodes;
         var building = buildingObj.GetComponent<Building>();
         buildingObj.name = building.displayName;
+        building.owner = playerNumber;
         resources.AddCoin(-building.cost);
 
         var routeHandler = building.GetComponent<RouteHandler>();

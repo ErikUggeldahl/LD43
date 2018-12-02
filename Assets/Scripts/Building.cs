@@ -10,6 +10,7 @@ public class Building : MonoBehaviour
         Farm,
         Market,
         GrainSilo,
+        ThievesDen,
     }
 
     public Type type;
@@ -21,4 +22,5 @@ public class Building : MonoBehaviour
     public string description;
     public int randomWeight;
     public float removeRouteChance;
+    public int owner = -1;
 }

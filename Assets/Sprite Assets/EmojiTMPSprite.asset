@@ -92,17 +92,17 @@ MonoBehaviour:
     pivot: {x: 0.5, y: 0.5}
     sprite: {fileID: 0}
   - id: 3
-    x: 384
-    y: 384
-    width: 128
-    height: 128
+    x: 192
+    y: 0
+    width: 64
+    height: 64
     xOffset: 0
-    yOffset: 115.6
-    xAdvance: 128
+    yOffset: 64
+    xAdvance: 64
     scale: 1
-    name: 1f60e
-    hashCode: 57188340
-    unicode: 128526
+    name: Thieves Den
+    hashCode: -1366242145
+    unicode: 9968
     pivot: {x: 0.5, y: 0.5}
     sprite: {fileID: 0}
   - id: 4

@@ -4,24 +4,31 @@ using UnityEngine;
 
 public class ResourceTravel : MonoBehaviour
 {
-    public Transform Destination { set { destination = value; transform.LookAt(destination.position); } }
+    public Transform Destination
+    {
+        set
+        {
+            destination = value;
+            if (destination)
+            {
+                completionRadius = destination.GetComponent<SphereCollider>().radius;
+                transform.LookAt(destination.position);
+            }
+        }
+    }
     Transform destination;
     float completionRadius;
 
-    public Transform travellingFrom;
+    public Transform origin;
 
     public int value = 1;
 
-    float speed = 1.75f;
+    public float speed = 1.75f;
 
-	void Start()
-	{
-        completionRadius = destination.GetComponent<SphereCollider>().radius;
-        transform.LookAt(destination.position);
-    }
-	
-	void Update()
-	{
+    void Update()
+    {
+        if (!destination) return;
+
         if (Vector3.Distance(transform.position, destination.position) > completionRadius)
         {
             transform.Translate(Vector3.forward * speed * DebugControl.Instance.speedMultiplier * Time.deltaTime, Space.Self);
@@ -30,5 +37,5 @@ public class ResourceTravel : MonoBehaviour
         {
             destination.GetComponent<RouteHandler>().Receieve(this);
         }
-	}
+    }
 }
