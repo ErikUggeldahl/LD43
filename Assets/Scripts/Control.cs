@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Control : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class Control : MonoBehaviour
 
     void Start()
     {
+        resources.CoinChanged += UpdateBuildButtonInteraction;
+
         city = Instantiate(city, Vector3.zero, Quaternion.identity);
         city.name = "City";
         city.GetComponent<City>().resources = resources;
@@ -77,24 +80,37 @@ public class Control : MonoBehaviour
         state = State.BuildSelect;
         uiAction.SetActive(false);
         uiBuild.SetActive(true);
+
+        UpdateBuildButtonInteraction();
+    }
+
+    void UpdateBuildButtonInteraction()
+    {
+        foreach (var button in uiBuild.GetComponentsInChildren<Button>())
+        {
+            button.interactable = CanBuild(button.GetComponent<TooltipHover>().represent);
+        }
+    }
+
+    bool CanBuild(GameObject building)
+    {
+        return building.GetComponent<Building>().cost <= resources.Coins;
     }
 
     public void BuildFarm()
     {
-        var farm = Instantiate(this.farm);
-        farm.name = "Farm";
         StartPicking(farm);
     }
 
     public void BuildMarket()
     {
-        var market = Instantiate(this.market);
-        market.name = "Market";
         StartPicking(market);
     }
 
     void StartPicking(GameObject building)
     {
+        if (!CanBuild(building)) return;
+
         state = State.Picking;
         uiBuild.SetActive(false);
 

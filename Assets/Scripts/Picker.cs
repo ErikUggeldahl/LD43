@@ -20,11 +20,12 @@ public class Picker : MonoBehaviour
         groundMask = LayerMask.GetMask("Ground");
     }
 
-    public void StartPicking(GameObject building)
+    public void StartPicking(GameObject buildingPrefab)
     {
         enabled = true;
 
-        this.building = building;
+        building = Instantiate(buildingPrefab);
+        building.name = buildingPrefab.GetComponent<Building>().displayName;
         building.transform.parent = blueprint;
         building.transform.localPosition = Vector3.zero;
 
@@ -69,6 +70,7 @@ public class Picker : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             building.transform.parent = nodes.transform;
+            control.resources.AddCoin(-building.GetComponent<Building>().cost);
             StopPicking();
         }
     }
