@@ -12,9 +12,10 @@ public class Resources : MonoBehaviour
     public event Action CoinChanged;
 
     int sacrifices = 0;
+    public int Sacrifices { get { return sacrifices; } }
     const int TOTAL_SACRIFICES = 100;
 
-    int coins = 20;
+    int coins = 30;
     public int Coins { get { return coins; } }
 
     void Start()

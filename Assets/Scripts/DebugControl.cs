@@ -30,4 +30,7 @@ public class DebugControl : MonoBehaviour
     public bool decisionsAtSpeed = true;
 
     public bool unlimitedCoin = false;
+
+    [Range(1f, 5f)]
+    public float tutorialSpeed = 1f;
 }

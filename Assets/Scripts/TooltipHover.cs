@@ -9,6 +9,11 @@ public class TooltipHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public GameObject represent;
 
+    void OnDisable()
+    {
+        display.Hide();
+    }
+
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
         display.Display(represent.GetComponent<Building>());

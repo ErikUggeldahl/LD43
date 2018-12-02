@@ -13,6 +13,8 @@ public class NPCControl : MonoBehaviour
     public Transform[] opponentNodes;
     public Transform roads;
 
+    public Control playerControl;
+
     public int playerNumber;
 
     const float DECISION_DOWNTIME = 1.5f;
@@ -30,6 +32,11 @@ public class NPCControl : MonoBehaviour
 
     IEnumerator Act()
     {
+        while (!playerControl.TutorialComplete)
+        {
+            yield return new WaitForSeconds(2f);
+        }
+
         var farm = Build(buildings.farm, NextBuildingLocation(2));
         yield return new WaitForSeconds(Downtime);
         var market = Build(buildings.market, NextBuildingLocation(2));

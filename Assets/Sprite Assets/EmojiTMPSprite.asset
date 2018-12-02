@@ -106,31 +106,31 @@ MonoBehaviour:
     pivot: {x: 0.5, y: 0.5}
     sprite: {fileID: 0}
   - id: 4
-    x: 0
-    y: 256
-    width: 128
-    height: 128
+    x: 256
+    y: 0
+    width: 64
+    height: 64
     xOffset: 0
-    yOffset: 115.6
-    xAdvance: 128
+    yOffset: 64
+    xAdvance: 64
     scale: 1
-    name: Grinning face
-    hashCode: -95541379
-    unicode: 128512
+    name: Temple
+    hashCode: -1049840187
+    unicode: 127968
     pivot: {x: 0.5, y: 0.5}
     sprite: {fileID: 0}
   - id: 5
-    x: 128
-    y: 256
-    width: 128
-    height: 128
+    x: 320
+    y: 0
+    width: 64
+    height: 64
     xOffset: 0
-    yOffset: 115.6
-    xAdvance: 128
+    yOffset: 64
+    xAdvance: 64
     scale: 1
-    name: 1f601
-    hashCode: 57188256
-    unicode: 128513
+    name: Arrow
+    hashCode: 74159225
+    unicode: 11014
     pivot: {x: 0.5, y: 0.5}
     sprite: {fileID: 0}
   - id: 6
