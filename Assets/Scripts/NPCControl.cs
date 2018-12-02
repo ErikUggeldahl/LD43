@@ -10,6 +10,7 @@ public class NPCControl : MonoBehaviour
     public Transform spawnLocations;
 
     public Transform nodes;
+    public Transform[] opponentNodes;
     public Transform roads;
 
     public int playerNumber;
@@ -47,22 +48,21 @@ public class NPCControl : MonoBehaviour
 
             if (resources.Coins >= Router.ROAD_COST && notFullyRouted.Count > 0)
             {
+                // Attempt only one route per iteration
                 int randomIndex = Random.Range(0, notFullyRouted.Count);
                 var selected = notFullyRouted[randomIndex];
                 var selectedTransform = (selected as MonoBehaviour).transform;
-                foreach (Transform building in nodes)
+                var routeTo = selectedTransform.GetComponent<Building>().type == Building.Type.ThievesDen ?
+                    RandomNode(selected, opponentNodes[RandomOpponent()]) :
+                    RandomNode(selected, nodes);
+
+                if (routeTo)
                 {
-                    if (selectedTransform == building) continue;
+                    Route(selectedTransform, routeTo);
 
-                    if (selected.CanRouteTo(building.gameObject))
+                    if (!selected.HasAvailableRoutes() || Random.value < (selected as MonoBehaviour).GetComponent<Building>().removeRouteChance)
                     {
-                        Route(selectedTransform, building);
-                        if (!selected.HasAvailableRoutes() || Random.value < (selected as MonoBehaviour).GetComponent<Building>().removeRouteChance)
-                        {
-                            notFullyRouted.RemoveAt(randomIndex);
-                        }
-
-                        break;
+                        notFullyRouted.RemoveAt(randomIndex);
                     }
                 }
             }
@@ -87,6 +87,25 @@ public class NPCControl : MonoBehaviour
         }
 
         return location;
+    }
+
+    Transform RandomNode(RouteHandler routeHandler, Transform nodes)
+    {
+        if (routeHandler == null) Debug.Log("Passed a null handler");
+        if (nodes.childCount == 0) return null;
+
+        var possible = nodes
+            .Cast<Transform>()
+            .Where(building => { if (building == null) Debug.Log("Building is null"); return building != transform && routeHandler.CanRouteTo(building.gameObject); })
+            .ToList();
+        if (possible.Count == 0) return null;
+
+        return possible[Random.Range(0, possible.Count)];
+    }
+
+    int RandomOpponent()
+    {
+        return Random.Range(0, opponentNodes.Length);
     }
 
     GameObject Build(GameObject toBuild, Vector3 location)

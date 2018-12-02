@@ -3136,6 +3136,8 @@ MonoBehaviour:
   buildings: {fileID: 557552470}
   spawnLocations: {fileID: 1908387334}
   nodes: {fileID: 2138178372}
+  opponentNodes:
+  - {fileID: 298822498}
   roads: {fileID: 310520915}
   playerNumber: 1
 --- !u!4 &870235448
