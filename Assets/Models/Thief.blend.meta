@@ -1,36 +1,54 @@
 fileFormatVersion: 2
-guid: cacee2025ef515148b171a196bac41cf
+guid: 1f3efa9f7180ee44bb3dbbd0a02bba15
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: GrainSilo
-    100002: //RootNode
-    100004: ThievesDen
-    100006: Cylinder
-    100008: ThievesDenGrounds
-    400000: GrainSilo
-    400002: //RootNode
-    400004: ThievesDen
-    400006: Cylinder
-    400008: ThievesDenGrounds
+    100000: //RootNode
+    100002: Cube
+    100004: Cube_001
+    100006: Armature
+    100008: Chest
+    100010: Head
+    100012: RLArm
+    100014: RLLeg
+    100016: RUArm
+    100018: RULeg
+    100020: Thief
+    100022: LLArm
+    100024: LLLeg
+    100026: LUArm
+    100028: LULeg
+    400000: //RootNode
+    400002: Cube
+    400004: Cube_001
+    400006: Armature
+    400008: Chest
+    400010: Head
+    400012: RLArm
+    400014: RLLeg
+    400016: RUArm
+    400018: RULeg
+    400020: Thief
+    400022: LLArm
+    400024: LLLeg
+    400026: LUArm
+    400028: LULeg
     2100000: unnamed
-    2300000: GrainSilo
-    2300002: //RootNode
-    2300004: ThievesDen
-    2300006: Cylinder
-    2300008: ThievesDenGrounds
-    3300000: GrainSilo
-    3300002: //RootNode
-    3300004: ThievesDen
-    3300006: Cylinder
-    3300008: ThievesDenGrounds
-    4300000: GrainSiloGrounds
-    4300002: GrainSilo
-    4300004: ThievesDenGrounds
-    4300006: ThievesDen
-    4300008: Cylinder
+    2300000: //RootNode
+    2300002: Cube
+    2300004: Cube_001
+    2300006: Thief
+    3300000: //RootNode
+    3300002: Cube
+    3300004: Cube_001
+    3300006: Thief
+    4300000: Cube
+    4300002: Cube_001
+    4300004: Thief
     7400000: Default Take
     9500000: //RootNode
+    11100000: //RootNode
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 0
@@ -67,8 +85,8 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -89,7 +107,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -107,7 +125,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 1
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
