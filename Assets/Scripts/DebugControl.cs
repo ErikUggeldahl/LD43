@@ -19,6 +19,11 @@ public class DebugControl : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        speedMultiplier = Difficulty.setting == Difficulty.Setting.Hard ? 2.25f : 1f;
+    }
+
     void OnApplicationQuit()
     {
         instance = null;
@@ -27,7 +32,7 @@ public class DebugControl : MonoBehaviour
     [Range(0.25f, 10f)]
     public float speedMultiplier = 1f;
 
-    public bool decisionsAtSpeed = true;
+    public bool decisionsAtSpeed = false;
 
     public bool unlimitedCoin = false;
 

@@ -595,7 +595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   displayName: Farm
-  cost: 5
+  cost: 10
   accepts: 0300000004000000
   connects: 0000000002000000
   description: A fundamental building that produces sheep needed for sacrifices. Connect

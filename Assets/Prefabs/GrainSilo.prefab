@@ -533,11 +533,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   displayName: Grain Silo
-  cost: 20
+  cost: 35
   accepts: 
   connects: 01000000
   description: An addition for up to two farms. Sheep travel to the grain silo to
-    double in value before returning and then routing to their final destination.
+    quintuple in value before returning and then routing to their final destination.
   randomWeight: 2
   removeRouteChance: 0
   owner: 0

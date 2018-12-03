@@ -245,7 +245,7 @@ public class Control : MonoBehaviour
 
         Vector3 originalCamPosition = tutorialCamera.position;
 
-        tutorialText.text = FormatTutorialText("SURVEY THE LAND WITH\nW, S, A, OR D.");
+        tutorialText.text = FormatTutorialText("SURVEY THE LAND WITH\nW, A, S, OR D.");
 
         while (tutorialCamera.position == originalCamPosition)
         {

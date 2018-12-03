@@ -21,9 +21,10 @@ public class Resources : MonoBehaviour
 
     int sacrifices = 0;
     public int Sacrifices { get { return sacrifices; } }
-    const int TOTAL_SACRIFICES = 100;
+    const int TOTAL_SACRIFICES = 1500;
+    int TotalSacrifices { get { return Difficulty.setting == Difficulty.Setting.Hard ? TOTAL_SACRIFICES * 3 : TOTAL_SACRIFICES; } }
 
-    int coins = 30;
+    int coins = 60;
     public int Coins { get { return coins; } }
 
     void Start()

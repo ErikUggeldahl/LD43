@@ -34,7 +34,7 @@ public class GrainSilo : MonoBehaviour, RouteHandler
     public void Receieve(ResourceTravel traveller)
     {
         traveller.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        traveller.value = 2;
+        traveller.value = 5;
         traveller.Destination = traveller.origin;
     }
 }

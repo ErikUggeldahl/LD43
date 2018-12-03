@@ -826,7 +826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   displayName: Market
-  cost: 10
+  cost: 20
   accepts: 0100000004000000
   connects: 0000000004000000
   description: Turns sheep into valuable currency needed for continued building. Can

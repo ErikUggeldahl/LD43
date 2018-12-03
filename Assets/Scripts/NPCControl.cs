@@ -27,6 +27,15 @@ public class NPCControl : MonoBehaviour
 
     void Start()
     {
+        if (Difficulty.setting == Difficulty.Setting.Hard)
+        {
+            resources.AddCoin(70);
+        }
+        else
+        {
+            resources.AddCoin(20);
+        }
+
         StartCoroutine(Act());
     }
 
