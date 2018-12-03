@@ -2698,7 +2698,7 @@ RectTransform:
   m_Children:
   - {fileID: 1801420561}
   m_Father: {fileID: 1458947034}
-  m_RootOrder: 13
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -8313,17 +8313,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1086616523}
-  m_LocalRotation: {x: 0, y: 0, z: 0.5870791, w: 0.8095296}
+  m_LocalRotation: {x: -0, y: -0, z: 0.5870791, w: 0.8095296}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 691199775}
-  m_Father: {fileID: 1458947034}
-  m_RootOrder: 11
+  m_Father: {fileID: 757521708}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 71.9}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 495.6, y: -60.7}
+  m_AnchoredPosition: {x: 495.59998, y: -55.700012}
   m_SizeDelta: {x: 636.3, y: 934}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1086616525
@@ -9370,17 +9370,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1309665414}
-  m_LocalRotation: {x: 0, y: 0, z: -0.3518416, w: 0.9360596}
+  m_LocalRotation: {x: -0, y: -0, z: -0.3518416, w: 0.9360596}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 767999073}
-  m_Father: {fileID: 1458947034}
-  m_RootOrder: 12
+  m_Father: {fileID: 757521708}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -41.2}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -394.7, y: -147.9}
+  m_AnchoredPosition: {x: -394.7, y: -142.90002}
   m_SizeDelta: {x: 636.3, y: 934}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1309665416
@@ -10065,8 +10065,6 @@ RectTransform:
   - {fileID: 1027101356}
   - {fileID: 814421495}
   - {fileID: 520858488}
-  - {fileID: 1086616524}
-  - {fileID: 1309665415}
   - {fileID: 362606992}
   m_Father: {fileID: 0}
   m_RootOrder: 1
